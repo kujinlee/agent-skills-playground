@@ -101,10 +101,13 @@ Then run `npm install && npm test` at the showcase root (working tree unchanged;
 **GitHub:** [kujinlee/claude-skill-playground](https://github.com/kujinlee/claude-skill-playground). **Local clone:** `~/code/claude-code-tutorial/claude-skill-playground` (change if yours differs). From the **skills** repo root:
 
 ```bash
-rsync -a --delete --exclude node_modules \
+# Always exclude .git — rsync --delete removes extra destination files, and would delete .git if omitted.
+rsync -a --delete --exclude node_modules --exclude '.git' \
   examples/skill-playground-showcase/ \
   ~/code/claude-code-tutorial/claude-skill-playground/
 
 cd ~/code/claude-code-tutorial/claude-skill-playground
 git add -A && git commit -m "chore: sync from skill-playground-showcase" && git push origin
 ```
+
+**If `.git` was removed** (e.g. an old rsync without `--exclude '.git'`): from `~/code/claude-code-tutorial/claude-skill-playground`, run `git init`, set `user.name` / `user.email`, `git add -A`, `git commit`, `git remote add origin https://github.com/kujinlee/claude-skill-playground.git`, then `git push -u origin main --force-with-lease` to republish your working tree (this rewrites `main` on GitHub to match local—only if you intend that).
