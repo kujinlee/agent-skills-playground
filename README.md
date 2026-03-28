@@ -1,81 +1,74 @@
-# Skill playground showcase
+# Skill playground (checkout tutorial)
 
-This folder is a **standalone teaching codebase** derived from `examples/skill-playground` in the [mattpocock/skills](https://github.com/mattpocock/skills) repo. It uses **snapshot folders** so you can compare the code before and after each skill-driven change.
+Checkout-refactor **tutorial codebase** with **snapshot folders** (`snapshots/00-baseline/` … `snapshots/07-migrate-shoehorn/`) so you can compare the project at each step. The working tree under `src/`, `tests/`, and `docs/` matches the **final** state after the refactor track.
 
-**Authoring vs published clone**
+---
 
-- **Here (in the skills repo):** canonical checkout-refactor showcase. Regenerate snapshots with [`scripts/regenerate-snapshots.sh`](scripts/regenerate-snapshots.sh); pins are documented in [`plans/checkout-refactor-ideal-teaching-order.md`](../../plans/checkout-refactor-ideal-teaching-order.md).
-- **Published tutorial:** GitHub [**kujinlee/claude-skill-playground**](https://github.com/kujinlee/claude-skill-playground). **Local clone** (maintainer): `~/code/claude-code-tutorial/claude-skill-playground`. Copy this directory when you cut a release—layout stays the same.
+## Credits
 
-## Agent skills (Claude Code)
+**Agent skills** used with this tutorial come from the collection by **[Matt Pocock](https://github.com/mattpocock)** in **[mattpocock/skills](https://github.com/mattpocock/skills)**. Browse every skill and its install command in the **[mattpocock/skills README](https://github.com/mattpocock/skills/blob/main/README.md)**.
 
-This project **does not** ship `.claude/`, `.agents/`, or bundled skills. Students install skills with the **`skills` CLI** when they need them (requires Node.js for `npx`).
+This repository is a **hands-on tutorial project**; it does not bundle skill definitions (install them with the commands below).
 
-1. **Browse the full catalog** — same install pattern for every skill:  
-   [github.com/kujinlee/skills — README](https://github.com/kujinlee/skills/blob/main/README.md) · [open in vscode.dev](https://vscode.dev/github/kujinlee/skills/blob/main/README.md)  
-   Upstream reference: [mattpocock/skills](https://github.com/mattpocock/skills) (use `mattpocock/skills/…` in commands if you are not using a fork).
+---
 
-2. **Install one skill** (from your machine, often from this repo’s root):
+## Installing agent skills
 
-   ```bash
-   npx skills@latest add kujinlee/skills/<skill-name>
-   # or: npx skills@latest add mattpocock/skills/<skill-name>
-   ```
+This project **does not** ship skill packages under `.claude/`, `.agents/`, or similar—those are created when **you** install skills. The installer is the open **[Skills CLI](https://github.com/vercel-labs/skills)** (Vercel Labs): `npx skills@latest …`. It targets a **generic** agent-skills layout; your editor or agent (Claude Code, Cursor, Codex, and others per [the Skills project](https://skills.sh)) decides how it consumes them. See the **[CLI docs](https://skills.sh/docs/cli)** and the **[`skills` package on npm](https://www.npmjs.com/package/skills)** for details.
 
-   Repeat for each skill you need. Installs go where your Claude Code / skills tooling expects (for example under `~/.claude/skills` or project-local paths—see the `skills` package behavior on your setup).
+```bash
+npx skills@latest add mattpocock/skills/<skill-name>
+```
 
-3. **Checkout-refactor curriculum** — skills referenced by the step snapshots (install **as you reach each step**, or install all at once):
+### Skills used in this checkout tutorial
 
-   | Skill | Install command (fork) | Install command (upstream) |
-   |-------|-------------------------|----------------------------|
-   | write-a-prd | `npx skills@latest add kujinlee/skills/write-a-prd` | `… mattpocock/skills/write-a-prd` |
-   | prd-to-plan | `… kujinlee/skills/prd-to-plan` | `… mattpocock/skills/prd-to-plan` |
-   | request-refactor-plan | `… kujinlee/skills/request-refactor-plan` | `…` |
-   | improve-codebase-architecture | `… kujinlee/skills/improve-codebase-architecture` | `…` |
-   | design-an-interface | `… kujinlee/skills/design-an-interface` | `…` |
-   | tdd | `… kujinlee/skills/tdd` | `…` |
-   | grill-me (optional) | `… kujinlee/skills/grill-me` | `…` |
-   | triage-issue (optional) | `… kujinlee/skills/triage-issue` | `…` |
-   | migrate-to-shoehorn | `… kujinlee/skills/migrate-to-shoehorn` | `…` |
+Install **as you go**, or use the loop at the end. Optional skills are marked.
 
-   Your fork **`kujinlee/skills`** should track **`mattpocock/skills`** if you want identical skill content; otherwise prefer **`mattpocock/skills`** in the commands above.
+| Skill | Install command |
+|-------|-----------------|
+| write-a-prd | `npx skills@latest add mattpocock/skills/write-a-prd` |
+| prd-to-plan | `npx skills@latest add mattpocock/skills/prd-to-plan` |
+| request-refactor-plan | `npx skills@latest add mattpocock/skills/request-refactor-plan` |
+| improve-codebase-architecture | `npx skills@latest add mattpocock/skills/improve-codebase-architecture` |
+| design-an-interface | `npx skills@latest add mattpocock/skills/design-an-interface` |
+| tdd | `npx skills@latest add mattpocock/skills/tdd` |
+| grill-me (optional) | `npx skills@latest add mattpocock/skills/grill-me` |
+| triage-issue (optional) | `npx skills@latest add mattpocock/skills/triage-issue` |
+| migrate-to-shoehorn | `npx skills@latest add mattpocock/skills/migrate-to-shoehorn` |
 
-4. **Install everything for this tutorial** (optional; includes optional skills):
+**Install all of the above in one go (optional):**
 
-   ```bash
-   OWNER=kujinlee   # or: mattpocock
-   for s in write-a-prd prd-to-plan request-refactor-plan improve-codebase-architecture design-an-interface tdd grill-me triage-issue migrate-to-shoehorn; do
-     npx skills@latest add "$OWNER/skills/$s"
-   done
-   ```
+```bash
+for s in write-a-prd prd-to-plan request-refactor-plan improve-codebase-architecture design-an-interface tdd grill-me triage-issue migrate-to-shoehorn; do
+  npx skills@latest add "mattpocock/skills/$s"
+done
+```
+
+---
+
+## Quick start
+
+```bash
+git clone https://github.com/kujinlee/agent-skills-playground.git
+cd agent-skills-playground
+npm install
+npm test
+```
+
+Then install the skills you need (see above).
+
+---
 
 ## Layout
 
 | Path | Meaning |
-|------|--------|
-| `src/`, `tests/`, `docs/` | **Working tree** — latest completed step while the showcase is built |
-| `snapshots/00-baseline/` … `snapshots/07-migrate-shoehorn/` | **Frozen** copies per step (see [`snapshots/README.md`](snapshots/README.md), [`plans/checkout-refactor-ideal-teaching-order.md`](../../plans/checkout-refactor-ideal-teaching-order.md)) |
-| `docs/showcase/` | Step-by-step narrative and [CURRICULUM.md](docs/showcase/CURRICULUM.md) |
-| `docs/artifacts/` | Exported outputs (PRDs, triage notes, plans, issue bodies) |
+|------|---------|
+| `src/`, `tests/`, `docs/` | **Working tree** — final refactored code + tests + docs |
+| `snapshots/00-baseline/` … `snapshots/07-migrate-shoehorn/` | **Frozen** copies per step — see [`snapshots/README.md`](snapshots/README.md) |
+| `docs/checkout-refactor/` | Refactor checklists, RFC, issue, review, summary |
+| `docs/*.md` (root) | Product brief, PRD, etc. |
 
-## Quick start
-
-**Published repo** ([claude-skill-playground](https://github.com/kujinlee/claude-skill-playground)):
-
-```bash
-git clone https://github.com/kujinlee/claude-skill-playground.git
-cd claude-skill-playground
-npm install
-npm test
-```
-
-**Inside the mattpocock/skills monorepo:**
-
-```bash
-cd examples/skill-playground-showcase
-npm install
-npm test
-```
+---
 
 ## Compare snapshots
 
@@ -84,30 +77,3 @@ npm test
 diff -ru snapshots/00-baseline/src snapshots/01-product-and-design/src
 diff -ru snapshots/00-baseline/docs snapshots/01-product-and-design/docs
 ```
-
-## Regenerate frozen snapshots
-
-From the skills repo, with `examples/skill-playground` history available:
-
-```bash
-cd examples/skill-playground-showcase
-./scripts/regenerate-snapshots.sh
-```
-
-Then run `npm install && npm test` at the showcase root (working tree unchanged; snapshots are for diffing).
-
-## Copy to `kujinlee/claude-skill-playground`
-
-**GitHub:** [kujinlee/claude-skill-playground](https://github.com/kujinlee/claude-skill-playground). **Local clone:** `~/code/claude-code-tutorial/claude-skill-playground` (change if yours differs). From the **skills** repo root:
-
-```bash
-# Always exclude .git — rsync --delete removes extra destination files, and would delete .git if omitted.
-rsync -a --delete --exclude node_modules --exclude '.git' \
-  examples/skill-playground-showcase/ \
-  ~/code/claude-code-tutorial/claude-skill-playground/
-
-cd ~/code/claude-code-tutorial/claude-skill-playground
-git add -A && git commit -m "chore: sync from skill-playground-showcase" && git push origin
-```
-
-**If `.git` was removed** (e.g. an old rsync without `--exclude '.git'`): from `~/code/claude-code-tutorial/claude-skill-playground`, run `git init`, set `user.name` / `user.email`, `git add -A`, `git commit`, `git remote add origin https://github.com/kujinlee/claude-skill-playground.git`, then `git push -u origin main --force-with-lease` to republish your working tree (this rewrites `main` on GitHub to match local—only if you intend that).

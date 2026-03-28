@@ -1,6 +1,6 @@
 # Snapshots
 
-Each `NN-<slug>/` directory is a **frozen copy** of the skill-playground project at that step (see [`plans/checkout-refactor-ideal-teaching-order.md`](../../../plans/checkout-refactor-ideal-teaching-order.md) in the skills repo).
+Each `NN-<slug>/` directory is a **frozen copy** of the project at that step in the checkout tutorial sequence.
 
 | Folder | Git source |
 |--------|------------|
@@ -13,6 +13,6 @@ Each `NN-<slug>/` directory is a **frozen copy** of the skill-playground project
 | `06-review-and-organize` | `2d124aa` |
 | `07-migrate-shoehorn` | `4bb070f` |
 
-Do not commit `node_modules/` inside snapshots. The showcase root `vitest.config.ts` excludes `**/snapshots/**` so frozen tests are not run twice.
+Do not commit `node_modules/` inside snapshots. The repository root `vitest.config.ts` excludes `**/snapshots/**` so frozen tests are not run twice.
 
-**Regenerate:** `../scripts/regenerate-snapshots.sh` from the parent `skill-playground-showcase` directory.
+**Regenerate (optional):** `scripts/regenerate-snapshots.sh` from this repository root (requires a local [mattpocock/skills](https://github.com/mattpocock/skills) clone in the path the script expects).
