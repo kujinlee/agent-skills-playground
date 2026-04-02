@@ -1,7 +1,7 @@
 # Day 1 Checklist: Checkout Consolidation Refactor
 
 **Related issue:** [Refactor checkout into deep module boundaries](https://github.com/kujinlee/skills/issues/2)  
-**Scope for Day 1:** Commits 1-3 only (baseline protection + contract introduction)  
+**Scope for Day 1:** Parts 1–3 only (baseline protection + contract introduction)  
 **Day 1 objective:** End with tests green and no unintended runtime behavior drift.
 
 ---
@@ -26,7 +26,7 @@ Use this section to validate Day 1 completion quality before starting Day 2.
 - [ ] Day 1 introduced runtime behavior changes instead of test + contract scaffolding.
 - [ ] Loyalty expectations are absent from tests (at least as pending/explicit placeholders).
 - [ ] New canonical contract types are missing or too vague to guide Day 2.
-- [ ] Test suite is not green on latest Day 1 commit.
+- [ ] Test suite is not green at the end of Day 1 work.
 
 **Go only if all are true:**
 
@@ -41,9 +41,9 @@ Use this section to validate Day 1 completion quality before starting Day 2.
 ```text
 Review Day 1 completion against this rubric.
 Use:
-- examples/skill-playground/docs/CHECKLIST-day-1-checkout-refactor.md
-- examples/skill-playground/tests/checkout.test.ts
-- examples/skill-playground/src/checkout/types.ts
+- docs/02-CHECKLIST-day-1-checkout-refactor.md
+- tests/checkout.test.ts
+- src/checkout/types.ts
 
 Return:
 1) Severity-ordered findings
@@ -57,14 +57,14 @@ Return:
 
 ## Preflight (15 minutes)
 
-- [ ] Pull latest branch and confirm clean working tree for targeted files.
-- [ ] Re-read issue #2 commit plan and lock scope: no production behavior changes today.
-- [ ] Decide temporary naming for canonical contract types (stable enough for follow-up commits).
-- [ ] Confirm process guardrail: tests must be green after every commit.
+- [ ] Start with no unrelated edits in the checkout files you are about to touch.
+- [ ] Re-read the scoped plan in the related issue (#2) and lock scope: no production behavior changes today.
+- [ ] Decide temporary naming for canonical contract types (stable enough for follow-up steps).
+- [ ] Confirm process guardrail: tests must stay green after each increment.
 
 ---
 
-## Commit 1: Characterization tests for current behavior
+## Part 1: Characterization tests for current behavior
 
 - [ ] Add tests that pin current `computeCheckout` behavior:
   - [ ] valid simple cart totals
@@ -73,7 +73,7 @@ Return:
   - [ ] invalid input behavior (email/cart)
 - [ ] Add tests pinning current `runCheckout` side-effect behavior (email invocation contract).
 - [ ] Run relevant test suite and confirm green.
-- [ ] Commit with intent like: `test: add checkout characterization coverage`.
+- [ ] Suggested save message (if you use version control): `test: add checkout characterization coverage`.
 
 ### Exit criteria
 
@@ -82,7 +82,7 @@ Return:
 
 ---
 
-## Commit 2: Loyalty characterization tests (boundary-focused)
+## Part 2: Loyalty characterization tests (boundary-focused)
 
 - [ ] Add characterization tests for loyalty outcomes from PRD examples:
   - [ ] no-coupon baseline points
@@ -92,23 +92,23 @@ Return:
   - [ ] tax/shipping exclusion semantics (as represented in current model)
 - [ ] Keep tests focused on external behavior, not internals.
 - [ ] Run tests and ensure acceptable status (green, or explicitly marked TODO/skip if not implemented yet).
-- [ ] Commit with intent like: `test: add loyalty characterization cases`.
+- [ ] Suggested save message (if you use version control): `test: add loyalty characterization cases`.
 
 ### Exit criteria
 
 - [ ] Loyalty expectations are explicit in tests.
-- [ ] Test suite is green at commit boundary.
+- [ ] Test suite is green at the end of this part.
 
 ---
 
-## Commit 3: Canonical pricing contract types (no rewiring)
+## Part 3: Canonical pricing contract types (no rewiring)
 
 - [ ] Introduce `PricingSnapshot`-style type(s) and related contract types.
 - [ ] Include planned loyalty fields in contract shape (optional initially if needed for compatibility).
-- [ ] Do not rewire runtime logic yet; this commit is contract scaffolding only.
+- [ ] Do not rewire runtime logic yet; this step is contract scaffolding only.
 - [ ] Add minimal compile/type usage assertion if useful.
 - [ ] Run tests and confirm green.
-- [ ] Commit with intent like: `refactor: introduce canonical pricing snapshot types`.
+- [ ] Suggested save message (if you use version control): `refactor: introduce canonical pricing snapshot types`.
 
 ### Exit criteria
 
@@ -122,7 +122,7 @@ Return:
 
 - [ ] No broad file-moving churn unless required for clarity.
 - [ ] No compatibility adapter rewiring yet (`computeCheckout` / `runCheckout` remain unchanged internally).
-- [ ] No notifier port injection yet (starts in later commits).
+- [ ] No notifier port injection yet (starts in later steps).
 - [ ] Keep diffs small and mechanical.
 
 ---
@@ -132,4 +132,4 @@ Return:
 - [ ] Characterization coverage for existing checkout behavior exists.
 - [ ] Loyalty expectation tests are added and visible.
 - [ ] Canonical pricing contract type(s) are introduced.
-- [ ] Latest commit is green and codebase is working.
+- [ ] Latest increment is green and codebase is working.

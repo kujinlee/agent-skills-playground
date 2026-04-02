@@ -7,28 +7,15 @@
 
 ## 1) Review activity checklist
 
-### A. Commit-level inspection
+### A. Change inspection
 
-- [ ] Review commit summaries:
-  - [ ] `e39ac3b` (Day 2 boundary/API refactor)
-  - [ ] `c4f50a7` (Day 1/Day 2 rubric docs)
-  - [ ] `29dedf2` (Day 2 cleanup/status updates)
-- [ ] Confirm each commit has a single intent and minimal unrelated churn.
+- [ ] Review recent change summaries for the Day 2 boundary work.
+- [ ] Confirm each change has a single intent and minimal unrelated churn.
 - [ ] Confirm compatibility exports (`computeCheckout`, `runCheckout`) remain available.
-
-Recommended commands:
-
-```bash
-git log --oneline -8
-git show --stat e39ac3b c4f50a7 29dedf2
-git show e39ac3b
-git show c4f50a7
-git show 29dedf2
-```
 
 ### B. Behavior verification
 
-- [ ] Run test suite in `examples/skill-playground`.
+- [ ] Run test suite at the repository root (`npm test`).
 - [ ] Confirm legacy behavior checks are still present and passing.
 - [ ] Confirm new boundary tests are present and passing.
 - [ ] Confirm notifier injection path is tested with a fake/spy dependency.
@@ -36,7 +23,6 @@ git show 29dedf2
 Recommended commands:
 
 ```bash
-cd examples/skill-playground
 npm test
 ```
 
@@ -50,9 +36,9 @@ npm test
 
 Reference docs:
 
-- `examples/skill-playground/docs/checkout-refactor/CHECKLIST-day-2-checkout-refactor.md`
-- `examples/skill-playground/docs/checkout-refactor/RFC-checkout-architecture-deepening.md`
-- `examples/skill-playground/docs/checkout-refactor/ISSUE-checkout-consolidation-refactor.md`
+- `docs/03-CHECKLIST-day-2-checkout-refactor.md`
+- `docs/01-RFC-checkout-architecture-deepening.md`
+- `docs/01-ISSUE-checkout-consolidation-refactor.md`
 
 ### D. Risk assessment
 
@@ -71,12 +57,11 @@ Use this as-is with a review agent:
 Review Day 2 implementation quality and risks.
 
 Scope:
-- examples/skill-playground/src/checkout/
-- examples/skill-playground/tests/checkout.test.ts
-- examples/skill-playground/docs/checkout-refactor/CHECKLIST-day-2-checkout-refactor.md
-- examples/skill-playground/docs/checkout-refactor/RFC-checkout-architecture-deepening.md
-- examples/skill-playground/docs/checkout-refactor/ISSUE-checkout-consolidation-refactor.md
-- commits: e39ac3b, c4f50a7, 29dedf2
+- src/checkout/
+- tests/checkout.test.ts
+- docs/03-CHECKLIST-day-2-checkout-refactor.md
+- docs/01-RFC-checkout-architecture-deepening.md
+- docs/01-ISSUE-checkout-consolidation-refactor.md
 
 Return:
 1) Severity-ordered findings (critical/high/medium/low)
@@ -92,13 +77,12 @@ Return:
 Review Day 2 implementation quality and risks.
 
 Scope:
-- examples/skill-playground/src/checkout/
-- examples/skill-playground/tests/checkout.test.ts
-- examples/skill-playground/docs/checkout-refactor/CHECKLIST-day-2-checkout-refactor.md
-- examples/skill-playground/docs/checkout-refactor/RFC-checkout-architecture-deepening.md
-- examples/skill-playground/docs/checkout-refactor/ISSUE-checkout-consolidation-refactor.md
-- examples/skill-playground/docs/checkout-refactor/REVIEW-day-2-quality-gate.md
-- commits: e39ac3b, c4f50a7, 29dedf2
+- src/checkout/
+- tests/checkout.test.ts
+- docs/03-CHECKLIST-day-2-checkout-refactor.md
+- docs/01-RFC-checkout-architecture-deepening.md
+- docs/01-ISSUE-checkout-consolidation-refactor.md
+- docs/06-REVIEW-day-2-quality-gate.md
 
 Return:
 1) Severity-ordered findings (critical/high/medium/low)
@@ -192,8 +176,8 @@ Only proceed if:
 
 ## 5) Post-remediation review (recorded findings)
 
-**When:** After commits `92342b4` (align loyalty points + projection-only receipt labels) and `854cd78` (compatibility + notifier guard tests).  
-**Tests:** `examples/skill-playground` — `npm test` — 18 passed at time of review.
+**When:** After completing loyalty-points alignment, projection-only receipt labels, compatibility work, and notifier guard tests.  
+**Tests:** `npm test` — 18 passed at time of review.
 
 ### Findings
 
@@ -246,7 +230,7 @@ Only proceed if:
 ## 6) Follow-up implementation re-review (recorded findings)
 
 **When:** After implementing the three follow-up actions from Section 5.  
-**Tests:** `examples/skill-playground` — `npm test` — 21 passed.
+**Tests:** `npm test` — 21 passed.
 
 ### Findings
 

@@ -1,6 +1,6 @@
 # Plan: Loyalty points at checkout
 
-> Source PRD: `docs/PRD-loyalty-program.md` (same content as the GitHub issue filed from that doc)
+> Source PRD: `docs/01-PRD-loyalty-program.md`
 
 ## Architectural decisions
 

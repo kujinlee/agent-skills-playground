@@ -16,7 +16,7 @@ Refactor checkout into a hybrid deep-module API:
 
 Include loyalty fields in the consolidated pricing model now, and include email-delivery injection via a notify port in this refactor. Preserve `computeCheckout` and `runCheckout` as compatibility APIs during migration, with minimal contract churn.
 
-## Commits
+## Planned steps
 
 1. Add characterization tests for current checkout behavior (totals, discounting, receipt lines, validation throws, completion side effects).
 2. Add characterization tests for loyalty PRD canonical examples and edge behavior (rounding, non-negative points, qualifying spend semantics).
@@ -31,7 +31,7 @@ Include loyalty fields in the consolidated pricing model now, and include email-
 11. Remove redundant shallow tests replaced by stable boundary tests.
 12. Final cleanup/docs pass to clarify canonical interfaces and compatibility wrappers.
 
-Each commit must keep tests green and leave the codebase in a working state.
+Each increment must keep tests green and leave the codebase in a working state.
 
 ## Decision Document
 
@@ -54,7 +54,7 @@ Each commit must keep tests green and leave the codebase in a working state.
   - composed quote behavior
   - completion behavior with injected notifier
 - Existing shallow tests may be removed once equivalent boundary coverage exists.
-- Keep test suite green after every commit.
+- Keep test suite green after each increment.
 
 ## Out of Scope
 

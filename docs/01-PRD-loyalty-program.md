@@ -1,6 +1,6 @@
 # PRD: Loyalty points at checkout
 
-_Sourced from `docs/PRODUCT_BRIEF.md` and the current checkout domain (merchandise subtotal, order coupons, pure `computeCheckout` + separate email send). Intended to be filed as a GitHub issue._
+_Sourced from `docs/00-PRODUCT_BRIEF.md` and the current checkout domain (merchandise subtotal, order coupons, pure `computeCheckout` + separate email send). Optional: break into tasks with **prd-to-issues** if you use a tracker._
 
 ---
 

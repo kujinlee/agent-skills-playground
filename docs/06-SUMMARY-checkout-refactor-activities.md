@@ -2,7 +2,7 @@
 
 ## Scope
 
-This document summarizes the checkout consolidation refactor completed for `examples/skill-playground/src/checkout/`, including planning artifacts, implementation checkpoints, and final quality-gate outcomes.
+This document summarizes the checkout consolidation refactor completed for `src/checkout/`, including planning artifacts, implementation checkpoints, and final quality-gate outcomes.
 
 ## Objective
 
@@ -21,7 +21,7 @@ This document summarizes the checkout consolidation refactor completed for `exam
 
 ## Implementation Activities (Chronological)
 
-1. Planned the refactor with a commit-by-commit issue plan.
+1. Planned the refactor with a step-by-step issue plan.
 2. Captured architecture options and recommendation in an RFC (A + C + composition direction).
 3. Executed Day 1 setup work:
    - Characterization tests for legacy behavior.
@@ -46,19 +46,21 @@ This document summarizes the checkout consolidation refactor completed for `exam
 ## Artifact Index
 
 - Refactor issue plan:
-  - `examples/skill-playground/docs/checkout-refactor/ISSUE-checkout-consolidation-refactor.md`
+  - `docs/01-ISSUE-checkout-consolidation-refactor.md`
 - Architecture RFC:
-  - `examples/skill-playground/docs/checkout-refactor/RFC-checkout-architecture-deepening.md`
+  - `docs/01-RFC-checkout-architecture-deepening.md`
 - Execution checklists:
-  - `examples/skill-playground/docs/checkout-refactor/CHECKLIST-day-1-checkout-refactor.md`
-  - `examples/skill-playground/docs/checkout-refactor/CHECKLIST-day-2-checkout-refactor.md`
+  - `docs/02-CHECKLIST-day-1-checkout-refactor.md`
+  - `docs/03-CHECKLIST-day-2-checkout-refactor.md`
 - Review records and quality-gate log:
-  - `examples/skill-playground/docs/checkout-refactor/REVIEW-day-2-quality-gate.md`
+  - `docs/06-REVIEW-day-2-quality-gate.md`
+- Activity summary:
+  - `docs/06-SUMMARY-checkout-refactor-activities.md`
 
 ## Inputs Referenced by the Refactor
 
 - PRD (product/behavior input):
-  - `examples/skill-playground/docs/PRD-loyalty-program.md`
+  - `docs/01-PRD-loyalty-program.md`
 - Loyalty phased plan:
-  - `examples/skill-playground/plans/loyalty-points-checkout.md`
+  - `docs/01-loyalty-points-checkout-plan.md`
 

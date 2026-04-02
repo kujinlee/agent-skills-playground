@@ -1,18 +1,7 @@
 # Snapshots
 
-Each `NN-<slug>/` directory is a **frozen copy** of the project at that step in the checkout tutorial sequence.
+For the **full tutorial** (steps, skills, motivation), start at **[`../docs/TUTORIAL.md`](../docs/TUTORIAL.md)**.
 
-| Folder | Git source |
-|--------|------------|
-| `00-baseline` | `7c7228d` |
-| `01-product-and-design` | `1fdb32d` |
-| `02-day1-characterization` | `2f3779c` |
-| `03-day1-day2-gates` | Hybrid: tree `2f3779c` + checklist files from `c4f50a7` |
-| `04-day2-deep-boundaries` | `e39ac3b` |
-| `05-loyalty-and-regression` | `854cd78` |
-| `06-review-and-organize` | `2d124aa` |
-| `07-migrate-shoehorn` | `4bb070f` |
+Each `NN-<slug>/` directory is a **frozen copy** of **`src/`** and **`tests/`** at that step. **`docs/` is not duplicated here**—briefs, PRD, **`01-loyalty-points-checkout-plan.md`**, checklists, and the rest live only in the repo root [`docs/`](../docs/). Each snapshot [`README.md`](00-baseline/README.md) points at that canonical plan where it applies. Compare `src/` and `tests/` with `diff`, or copy them from a snapshot if you want to jump to a specific stage.
 
-Do not commit `node_modules/` inside snapshots. The repository root `vitest.config.ts` excludes `**/snapshots/**` so frozen tests are not run twice.
-
-**Regenerate (optional):** `scripts/regenerate-snapshots.sh` from this repository root (requires a local [mattpocock/skills](https://github.com/mattpocock/skills) clone in the path the script expects).
+Do not store `node_modules/` inside snapshot folders (they should not be part of the tutorial tree). The repository root `vitest.config.ts` excludes `**/snapshots/**` so frozen tests are not run twice.
